@@ -65,6 +65,19 @@ class Parser<S:TokenSource<Token>, Token> {
 		last = token.elt;
 		token = token.next;
 	}
+	
+	/**
+		Inserts a new token at the current position, so peek(0) returns it first.
+	**/
+	inline function insert(t:Token) {
+		var newToken = new haxe.ds.GenericStack.GenericCell<Token>(t, null);
+		if (token == null) {
+			token = newToken;
+		} else {
+			newToken.next = token;
+			token = newToken;
+		}+
+	}
 		
 	/**
 		Returns the current lexer position.
