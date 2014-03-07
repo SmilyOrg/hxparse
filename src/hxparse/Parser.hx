@@ -76,7 +76,7 @@ class Parser<S:TokenSource<Token>, Token> {
 		} else {
 			newToken.next = token;
 			token = newToken;
-		}+
+		}
 	}
 		
 	/**
